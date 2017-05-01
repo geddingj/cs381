@@ -2,8 +2,8 @@
 
 --Consider the stack language S defined by the following grammar. 
 
-S ::=C|C;S
-C ::=LDInt |ADD|MULT|DUP
+--S ::=C|C;S
+--C ::=LDInt |ADD|MULT|DUP
 
 {-An S-program essentially consists of a (non-empty) sequence of commands/operations C. 
 The meaning of an S- program is to start with an empty stack and to perform its first operation on it, 
@@ -32,12 +32,12 @@ Please note that the semantic domain has to be defined as a function domain
 (since the meaning of a stack program is a transformation of stacks) and as an error domain 
 (since operations can fail). Therefore, sem has to have the following type where you have to find an appropriate type defintition for D.-}
 
-sem :: Prog -> D
+--sem :: Prog -> D
 
 --To define sem you probably want to define an auxiliary function semCmd for the semantics of individual operations,
 --which has the following type.
 
-semCmd :: Cmd -> D
+--semCmd :: Cmd -> D
 
 --Hint. Test your functions with the programs [LD 3,DUP,ADD,DUP,MULT] and [LD 3,ADD] and the empty stack [] as inputs.
 
@@ -47,7 +47,7 @@ semCmd :: Cmd -> D
 {-Suppose we want to add a simple macro facility to the stack language that allows us to define parameterless macros like SQR = DUP; MULT. 
 The definition C would change as follows. -}
 
-C ::=LDInt |ADD|MULT|DUP|DEFString(S)|CALLString
+--C ::=LDInt |ADD|MULT|DUP|DEFString(S)|CALLString
 
 {-The operation DEF n (C1; . . . ;Ck) defines a macro named n that is available in the rest of the program and, 
 when called, causes the execution of C1;...;Ck. CALL n calls the macro named n if it has been defined earlier in the program. 
@@ -69,9 +69,9 @@ type Macros = [(String,Prog)]
 --Exercise 3. Mini Logo
 
 --Consider the simplified version of Mini Logo (without macros), defined by the following abstract syntax.
-data Cmd = Pen Mode
+data Cmd2 = Pen Mode
            | MoveTo Int Int
-           | Seq Cmd Cmd
+           | Seq Cmd2 Cmd2
 
 data Mode = Up | Down
 
@@ -89,12 +89,12 @@ type Lines = [Line]
 
 --Define the semantics of Mini Logo by giving two function definitions. First, define a function semS that has the following type.
   
-semS :: Cmd -> State -> (State,Lines)
+--semS :: Cmd2 -> State -> (State,Lines)
 
 --This function defines for each Cmd how it modifies the current drawing state and what lines it produces. 
 --After that define the semantic function sem' of the following type.
 
-sem' :: Cmd -> Lines
+--sem' :: Cmd2 -> Lines
 
 --The function sem' should call semS. The initial state is defined to have the pen up and the current drawing position at (0, 0).
 --Note. To test your semantics you can use the function ppLines defined in the Haskell file provided on the class web site. 
