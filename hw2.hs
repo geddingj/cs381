@@ -50,10 +50,10 @@ type Stack		= [Int]
 type D			= Stack -> Maybe Stack		--Maybe is inserted due to requirement for handling errors
 
 data Cmd		= LD Int
-				| ADD
-				| MULT
-				| DUP
-				deriving Show
+			| ADD
+			| MULT
+			| DUP
+			deriving Show
 
 sem :: Prog -> D
 sem	[]	s	= Just s
