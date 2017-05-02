@@ -56,19 +56,19 @@ data Cmd		= LD Int
 				deriving Show
 
 sem :: Prog -> D
-sem	[]		s	= Just s
+sem	[]	s	= Just s
 sem (x:xs)	s	= case (semCmd x s) of
-				  Nothing -> Nothing
-				  Just s' -> sem xs s'
+			  Nothing -> Nothing
+			  Just s' -> sem xs s'
 
 semCmd :: Cmd -> D
-semCmd (LD i)		x	= Just (i:x)
-semCmd (DUP)	(x:xs)	= Just (x:x:xs)
-semCmd (DUP)		_	= Nothing
+semCmd (LD i)	x 	= Just (i:x)
+semCmd (DUP)  (x:xs)	= Just (x:x:xs)
+semCmd (DUP)	_	= Nothing
 semCmd (ADD)  (x:y:xs)	= Just ((x + y):xs)
-semCmd (ADD)		_	= Nothing
+semCmd (ADD)	_	= Nothing
 semCmd (MULT) (x:y:xs)	= Just ((x * y):xs)
-semCmd (MULT)		_	= Nothing
+semCmd (MULT)	_	= Nothing
 
 --Tests
 test0 :: Prog
