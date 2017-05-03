@@ -34,7 +34,7 @@ semCmd (MULT)  (x:y:xs) = Just ((x*y):xs)
 semCmd (MULT)        _  = Nothing
 
 --Exercise 1-2: Extended 
-
+{-
 sem2 :: Prog -> E
 sem2 []	      s	= Just s
 sem2 (x:xs)   s	= case (semCmd2 x s) of
@@ -43,7 +43,7 @@ sem2 (x:xs)   s	= case (semCmd2 x s) of
 
 
 --semCmd2 :: Cmd -> E
-
+-}
 
 --sandbox
 p :: Prog
